@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX E JQUERY MODO SIMPLES MULTIPLOS ITENS</title>
+</head>
+
+<body>
+
+    <h1>AJAX jQuery</h1>
+    <div id="output"></div>
+    <button id="click">Clique aqui</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $('#click').click(webData);
+
+        function webData() {
+            var url = 'https://api.spacexdata.com/v3/launches/'
+            $.getJSON(url, output)
+
+        }
+
+        function output(data) {
+            console.log(data)
+            var html;
+            $.each(data, function (k, v) {
+                html += '<h3>Flight Number' + v.flight_number + '</h3>';
+                html += 'Details' + v.details + '<br>'
+
+            })
+
+            $('#output').html(html)
+        }
+    </script>
+
+</body>
+
+</html>
